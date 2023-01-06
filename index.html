@@ -13,29 +13,38 @@
         <div class="weather-app">
         <div class="row">
             <div class="col-4">
-        <h1>
-            Rome
-        </h1>
-        <ul>
+                <div class="city-name">
+                    Rome
+                </div>
+        <ul class="current-date">
+            <li>
+                January, 5
+            </li>
             <li>
                 Wednesday 16:07
             </li>
         </ul>
             </div>
             <div class="col-4">
-                17 °C | °F
-                <img src="https://effortless-quokka-9bf2b2.netlify.app/images/sunny.png" 
+                <div class="temperature">
+              <span class="current-temperature" id="current-temperature">
+                17
+              </span> 
+             <a class="C" id="C-link" href="">°C</a>
+             <a class="F" id="F-link" href="">°F</a>
+            <img src="https://effortless-quokka-9bf2b2.netlify.app/images/sunny.png" 
                 alt="clear"
                 id="current-weather-icon"
                 class="current-weather-icon">
+                </div>
             </div>
             <div class="col-4">
-                <h1>
+                <div class="weather-description">
                     Clear
-                </h1>
-                <ul>
+                </div>
+                <ul class="current-weather-description">
                     <li>
-                        Humidity:95%
+                        Humidity: 95%
                     </li>
                     <li>
                         Wind: 3 km/h
