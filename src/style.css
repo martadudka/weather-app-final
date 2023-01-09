@@ -30,11 +30,18 @@ body {
     padding: 0;
 }
 
+.current-temperature img {
+    height: 64px;
+    width: 64px;
+    margin-right: 12px;  
+}
+
 .degrees {
     color: rgb(67, 111, 113);
     font-size: 48px;
     line-height: 64px;
 }
+
 .C, .F {
     font-size: 16px;
     color: rgb(67, 111, 113);
@@ -44,10 +51,4 @@ body {
 .current-temperature .units {
     position: relative;
     top: 8px;
-}
-
-.current-temperature img {
-    height: 64px;
-    width: 64px;
-    margin-left: 10px;  
 }
