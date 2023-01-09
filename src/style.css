@@ -16,9 +16,10 @@ body {
 
 .city-name, .weather-description {
     color: rgb(67, 111, 113);
-    font-size: 24px;
+    font-size: 26px;
     margin: 0;
     padding: 0;
+    text-transform: capitalize;
 }
 
 .current-date, .current-weather-description {
