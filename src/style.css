@@ -41,6 +41,11 @@ body {
     text-decoration: none;
 }
 
+.current-temperature .units {
+    position: relative;
+    top: 8px;
+}
+
 .current-temperature img {
     height: 64px;
     width: 64px;
