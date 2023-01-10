@@ -13,7 +13,13 @@ body {
     border-radius: 20px;
     box-shadow: rgb(214, 211, 211) 10px 5px 5px;
 }
+.search {
+    margin: 30px;
+}
 
+.info {
+    margin: 30px;
+}
 .city-name, .weather-description {
     color: rgb(67, 111, 113);
     font-size: 26px;
