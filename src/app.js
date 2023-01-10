@@ -7,6 +7,12 @@ cityNameElement.innerHTML = response.data.city;
 
 let weatherDescriptionElement = document.querySelector("#weather-description");
 weatherDescriptionElement.innerHTML = response.data.condition.description;
+
+let humidityElement = document.querySelector("#humidity");
+humidityElement.innerHTML = response.data.temperature.humidity;
+
+let windElement = document.querySelector("#wind");
+windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
