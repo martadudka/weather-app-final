@@ -32,15 +32,15 @@ body {
 }
 
 .current-temperature img {
-    height: 64px;
-    width: 64px;
-    margin-right: 12px;  
+    height: 80px;
+    width: 80px;
+    margin-right: 0px;  
 }
 
 .degrees {
     color: rgb(67, 111, 113);
     font-size: 48px;
-    line-height: 64px;
+    line-height: 80px;
 }
 
 .C, .F {
@@ -51,5 +51,5 @@ body {
 
 .current-temperature .units {
     position: relative;
-    top: 8px;
+    line-height: 60px;
 }

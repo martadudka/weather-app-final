@@ -39,9 +39,13 @@ windElement.innerHTML = Math.round(response.data.wind.speed);
 
 let dateElement = document.querySelector("#date");
 dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+let weatherIcon = document.querySelector("#current-weather-icon");
+weatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 }
 
 let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Lisbon&key=${apiKey}&units=metric`;
+let city = "Rome";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayWeather);
