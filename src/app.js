@@ -42,6 +42,7 @@ dateElement.innerHTML = formatDate(response.data.time * 1000);
 
 let weatherIcon = document.querySelector("#current-weather-icon");
 weatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+weatherIcon.setAttribute("alt", response.data.condition.icon);
 }
 
 let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
