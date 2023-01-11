@@ -22,6 +22,7 @@ function formatDate(timestamp) {
 }
 
 function displayWeather(response) {
+document.querySelector("#city-name").innerHTML = response.data.name;
 let degreesElement = document.querySelector("#degrees");
 degreesElement.innerHTML = Math.round(response.data.temperature.current);
 
@@ -45,9 +46,19 @@ weatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/wea
 weatherIcon.setAttribute("alt", response.data.condition.icon);
 }
 
+function searchCity(city) {
 let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
-let city = "Rome";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
 axios.get(apiUrl).then(displayWeather);
+}
 
+function buttonSearch(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-search-input").value;
+  searchCity(city);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", buttonSearch);
+
+searchCity("Kyiv");
