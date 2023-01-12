@@ -49,13 +49,20 @@ body {
     line-height: 80px;
 }
 
-.cLink, .fLink {
+.celcius-link, .fahrenheit-link {
     font-size: 16px;
-    color: rgb(67, 111, 113);
     text-decoration: none;
 }
 
-.current-temperature .units {
+.active {
+color: rgb(67, 111, 113);
+cursor: default;
+}
+
+.active:hover {
+text-decoration: none;
+}
+.current-temperature {
     position: relative;
     line-height: 60px;
 }

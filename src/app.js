@@ -30,8 +30,10 @@ function displayWeather(response) {
   let dateElement = document.querySelector("#date");
   let weatherIcon = document.querySelector("#current-weather-icon");
 
+  celciusTemperature = response.data.temperature.current;
+
   city.innerHTML = response.data.city;
-  degreesElement.innerHTML = Math.round(response.data.temperature.current);
+  degreesElement.innerHTML = Math.round(celciusTemperature);
   weatherDescriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -59,9 +61,7 @@ searchCity("Kyiv");
 
 function searchLocation(position) {
   let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
-  let lon = position.coords.longitude;
-  let lat = position.coords.latitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}`;
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -72,3 +72,28 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let degreesElement = document.querySelector("#degrees");
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  degreesElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  let degreesElement = document.querySelector("#degrees");
+ celciusLink.classList.add("active");
+ fahrenheitLink.classList.remove("active");
+  degreesElement.innerHTML = Math.round(celciusTemperature);
+}
+
+  let celciusTemperature = null;
+
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+  let celciusLink = document.querySelector("#celcius-link");
+  celciusLink.addEventListener("click", displayCelciusTemperature);
