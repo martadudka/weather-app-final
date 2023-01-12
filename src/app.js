@@ -22,43 +22,53 @@ function formatDate(timestamp) {
 }
 
 function displayWeather(response) {
-document.querySelector("#city-name").innerHTML = response.data.name;
-let degreesElement = document.querySelector("#degrees");
-degreesElement.innerHTML = Math.round(response.data.temperature.current);
+  let city = document.querySelector("#city-name");
+  let degreesElement = document.querySelector("#degrees");
+  let weatherDescriptionElement = document.querySelector("#weather-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  let weatherIcon = document.querySelector("#current-weather-icon");
 
-let cityNameElement = document.querySelector("#city-name");
-cityNameElement.innerHTML = response.data.city;
-
-let weatherDescriptionElement = document.querySelector("#weather-description");
-weatherDescriptionElement.innerHTML = response.data.condition.description;
-
-let humidityElement = document.querySelector("#humidity");
-humidityElement.innerHTML = response.data.temperature.humidity;
-
-let windElement = document.querySelector("#wind");
-windElement.innerHTML = Math.round(response.data.wind.speed);
-
-let dateElement = document.querySelector("#date");
-dateElement.innerHTML = formatDate(response.data.time * 1000);
-
-let weatherIcon = document.querySelector("#current-weather-icon");
-weatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
-weatherIcon.setAttribute("alt", response.data.condition.icon);
+  city.innerHTML = response.data.city;
+  degreesElement.innerHTML = Math.round(response.data.temperature.current);
+  weatherDescriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
+  weatherIcon.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+  weatherIcon.setAttribute("alt", response.data.condition.icon);
 }
 
 function searchCity(city) {
-let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayWeather);
+  let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
 }
 
-function buttonSearch(event) {
+function buttonSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#city-search-input").value;
-  searchCity(city);
+  let city = document.querySelector("#city-search-input");
+  searchCity(city.value);
 }
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", buttonSearch);
+form.addEventListener("submit", buttonSubmit);
 
 searchCity("Kyiv");
+
+function searchLocation(position) {
+  let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
+  let lon = position.coords.longitude;
+  let lat = position.coords.latitude;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayWeather);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
