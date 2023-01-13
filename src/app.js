@@ -21,6 +21,32 @@ function formatDate(timestamp) {
     return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+let forecastElement = document.querySelector("#forecast");
+
+let days = ["Mon", "Thu", "Wed", "Thu", "Fri", "Sat"];
+
+let forecastHTML = `<div class="row">`;
+days.forEach(function(day) {
+forecastHTML = forecastHTML +
+  `
+  <div class="col-2">
+    <strong class="week-day">${day}</strong>
+      <img 
+      class="weather-icon"
+      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" 
+      alt=""
+      >
+      <strong class="day-temperature">22°</strong>
+      <span class="night-temperature">17°</span>
+  </div>
+`;
+});
+
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeather(response) {
   let city = document.querySelector("#city-name");
   let degreesElement = document.querySelector("#degrees");
@@ -54,11 +80,6 @@ function buttonSubmit(event) {
   searchCity(city.value);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", buttonSubmit);
-
-searchCity("Kyiv");
-
 function searchLocation(position) {
   let apiKey = "1d1a4ta9d508e3cb925a520dd24fdc3o";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}`;
@@ -69,9 +90,6 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
-
-let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", getCurrentLocation);
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
@@ -85,10 +103,16 @@ function displayFahrenheitTemperature(event) {
 function displayCelciusTemperature(event) {
   event.preventDefault();
   let degreesElement = document.querySelector("#degrees");
- celciusLink.classList.add("active");
- fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   degreesElement.innerHTML = Math.round(celciusTemperature);
 }
+
+  let form = document.querySelector("#search-form");
+  form.addEventListener("submit", buttonSubmit);
+
+  let currentLocationButton = document.querySelector("#current-location-button");
+  currentLocationButton.addEventListener("click", getCurrentLocation);
 
   let celciusTemperature = null;
 
@@ -97,3 +121,6 @@ function displayCelciusTemperature(event) {
 
   let celciusLink = document.querySelector("#celcius-link");
   celciusLink.addEventListener("click", displayCelciusTemperature);
+
+  searchCity("Kyiv");
+  displayForecast();
