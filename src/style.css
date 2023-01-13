@@ -4,7 +4,7 @@ body {
 
 .weather-app-wrapper {
     max-width: 800px;
-    margin: 100px auto;
+    margin: 60px auto;
 }
 
 .weather-app {
@@ -18,10 +18,10 @@ body {
 }
 
 .info {
-    margin: 30px;
+    margin: 40px;
 }
 .city-name, .weather-description {
-    color: rgb(67, 111, 113);
+    color: rgb(42, 87, 89);
     font-size: 26px;
     margin: 0;
     padding: 0;
@@ -44,7 +44,7 @@ body {
 }
 
 .degrees {
-    color: rgb(67, 111, 113);
+    color: rgb(42, 87, 89);
     font-size: 48px;
     line-height: 80px;
 }
@@ -55,14 +55,45 @@ body {
 }
 
 .active {
-color: rgb(67, 111, 113);
-cursor: default;
+    color: rgb(42, 87, 89);
+    cursor: default;
 }
 
 .active:hover {
-text-decoration: none;
+    text-decoration: none;
 }
 .current-temperature {
     position: relative;
     line-height: 60px;
+}
+
+.weather-forecast {
+    text-align: center;
+}
+
+.week-day {
+    font-size: 18px;
+}
+
+.weather-forecast img {
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin: auto;
+    margin-top: -20px;
+}
+
+.night-temperature {
+    color: rgb(106, 101, 101);
+}
+
+.Git-Hub-Link {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 30px;
+}
+
+.Git-Hub-Link a {
+    text-decoration: none;
 }
