@@ -8,13 +8,13 @@ body {
 }
 
 .weather-app {
-    padding: 20px 10px;
+    padding: 40px 10px;
     border: 1px solid rgb(238, 234, 234);
     border-radius: 20px;
     box-shadow: rgb(214, 211, 211) 10px 5px 5px;
 }
 .search {
-    margin: 30px;
+    margin-left: 30px;
 }
 
 .info {
