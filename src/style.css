@@ -87,11 +87,15 @@ body {
     color: rgb(106, 101, 101);
 }
 
-.Git-Hub-Link {
-    display: block;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px 30px;
+footer {
+    color: rgb(93, 92, 92);
+    margin-top: 40px;
+    margin-bottom: -25px;
+    text-align: center;
+}
+
+.Git-Hub-Link strong {
+    color: black;
 }
 
 .Git-Hub-Link a {
