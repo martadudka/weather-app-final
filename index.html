@@ -15,7 +15,7 @@
         <div class="weather-app">
             <form id="search-form" class="search mb-3">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-5">
                         <input 
                         type="search"
                         id="city-search-input"
@@ -24,7 +24,7 @@
                         class="form-control"
                         >
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <input 
                         type="submit" 
                         value="Search"
@@ -32,9 +32,9 @@
                         id="search-button-input"
                         >
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <button 
-                        class="btn btn-success"
+                        class="btn btn-success current-location-button"
                         id="current-location-button">
                         Current location
                         </button>
@@ -42,7 +42,7 @@
                 </div>
             </form>
         <div class="row info">
-            <div class="col-4">
+            <div class="col">
                 <strong class="city-name" id="city-name"></strong>
         <ul class="current-date">
             <li>
@@ -50,7 +50,7 @@
             </li>
         </ul>
             </div>
-            <div class="col-4">
+            <div class="col d-none d-md-block">
                 <div class="d-flex current-temperature">
             <img 
                 src=""
@@ -59,7 +59,7 @@
             <span class="degrees" id="degrees"></span> °C
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col">
                 <strong class="weather-description" id="weather-description"></strong>
                 <ul class="current-weather-description">
                     <li class="humidity">
